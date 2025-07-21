@@ -4,6 +4,9 @@ networks:
   elantar_net:
     name: elantar_net
     driver: bridge
+  elantar_net_dev:
+    name: elantar_net_dev
+    driver: bridge
 
 services:
   traefik:
@@ -28,3 +31,4 @@ services:
       - "./letsencrypt:/letsencrypt"
     networks:
       - elantar_net
+      - elantar_net_dev
