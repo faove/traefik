@@ -1,11 +1,11 @@
 version: '3.9'
 
 networks:
-  elantar_net:
-    name: elantar_net
+  devnodo_net:
+    name: devnodo_net
     driver: bridge
-  elantar_net_dev:
-    name: elantar_net_dev
+  devnodo_net_dev:
+    name: devnodo_net_dev
     driver: bridge
 
 services:
@@ -30,5 +30,5 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./letsencrypt:/letsencrypt"
     networks:
-      - elantar_net
-      - elantar_net_dev
+      - devnodo_net
+      - devnodo_net_dev
