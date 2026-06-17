@@ -23,6 +23,7 @@ services:
       - "--certificatesresolvers.letsencrypt.acme.email=faovenezuela@gmail.com"
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
       - "--accesslog=true"
+      - "--accesslog.filepath=/logs/access.log"
     ports:
       - "80:80"
       - "443:443"
@@ -30,6 +31,7 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./letsencrypt:/letsencrypt"
+      - "./logs:/logs"
     networks:
       - elantar_net
       - elantar_net_dev
