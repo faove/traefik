@@ -22,6 +22,7 @@ services:
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
       - "--certificatesresolvers.letsencrypt.acme.email=faovenezuela@gmail.com"
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+      - "--accesslog=true"
     ports:
       - "80:80"
       - "443:443"
@@ -32,3 +33,8 @@ services:
     networks:
       - elantar_net
       - elantar_net_dev
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "3"
