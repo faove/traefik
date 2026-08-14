@@ -37,6 +37,10 @@ services:
     networks:
       - elantar_net
       - elantar_net_dev
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
     logging:
       driver: "json-file"
       options:
