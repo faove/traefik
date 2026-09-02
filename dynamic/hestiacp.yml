@@ -3,7 +3,7 @@ http:
     panel-auth:
       basicauth:
         users:
-          - "admin:$$apr1$$dpx4CFDA$$nSa9OoQMUZNR3seBZvkp21"
+          - "admin:$$apr1$$YxhiDl2B$$wYfNd03sMOMkXy0tt9ElV1"
 
   routers:
     # Dominios públicos sin autenticación
