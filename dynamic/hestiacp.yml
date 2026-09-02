@@ -1,0 +1,15 @@
+http:
+  routers:
+    hestiacp-router:
+      rule: "Host(`elantar.net`, `www.elantar.net`, `enrolanow.com`, `www.enrolanow.com`, `app.enrolanow.com`, `erpelantar.com`, `www.erpelantar.com`, `dev.erpelantar.com`, `panel.erpelantar.com`, `webmail.elantar.net`, `webmail.enrolanow.com`, `webmail.erpelantar.com`)"
+      entryPoints:
+        - websecure
+      service: hestiacp-service
+      tls:
+        certResolver: letsencrypt
+  services:
+    hestiacp-service:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:8082"
+        passHostHeader: true
