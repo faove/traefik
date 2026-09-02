@@ -1,12 +1,31 @@
 http:
+  middlewares:
+    panel-auth:
+      basicauth:
+        users:
+          - "admin:$$apr1$$kY47DENm$$FSHb7cogMRaQ2wz5cvZx9/"
+
   routers:
-    hestiacp-router:
-      rule: "Host(`elantar.net`, `www.elantar.net`, `enrolanow.com`, `www.enrolanow.com`, `app.enrolanow.com`, `erpelantar.com`, `www.erpelantar.com`, `dev.erpelantar.com`, `panel.erpelantar.com`, `webmail.elantar.net`, `webmail.enrolanow.com`, `webmail.erpelantar.com`)"
+    # Dominios públicos sin autenticación
+    hestiacp-public:
+      rule: "Host(`elantar.net`, `www.elantar.net`, `enrolanow.com`, `www.enrolanow.com`, `app.enrolanow.com`, `erpelantar.com`, `www.erpelantar.com`, `dev.erpelantar.com`)"
       entryPoints:
         - websecure
       service: hestiacp-service
       tls:
         certResolver: letsencrypt
+
+    # Panel admin y webmail con BasicAuth
+    hestiacp-admin:
+      rule: "Host(`panel.erpelantar.com`, `webmail.elantar.net`, `webmail.enrolanow.com`, `webmail.erpelantar.com`)"
+      entryPoints:
+        - websecure
+      service: hestiacp-service
+      middlewares:
+        - panel-auth
+      tls:
+        certResolver: letsencrypt
+
   services:
     hestiacp-service:
       loadBalancer:
