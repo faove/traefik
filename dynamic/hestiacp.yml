@@ -8,7 +8,7 @@ http:
   routers:
     # Dominios públicos sin autenticación
     hestiacp-public:
-      rule: "Host(`elantar.net`, `www.elantar.net`, `enrolanow.com`, `www.enrolanow.com`, `app.enrolanow.com`, `www.erpelantar.com`, `dev.erpelantar.com`)"
+      rule: "Host(`elantar.net`, `www.elantar.net`, `enrolanow.com`, `www.enrolanow.com`, `app.enrolanow.com`)"
       entryPoints:
         - websecure
       service: hestiacp-service
